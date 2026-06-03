@@ -230,7 +230,7 @@
   .empty-icon { font-size: 2rem; opacity: 0.4; }
   .empty-state p { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; }
 
-  .btn-more { background: var(--pink); color: white; border: none; border-radius: 8px; padding: 18px; font-family: 'Bebas Neue', sans-serif; font-size: 1.7rem; letter-spacing: 0.25em; cursor: pointer; width: 100%; transition: all 0.15s; box-shadow: 0 4px 24px var(--pink-glow); position: relative; overflow: hidden; }
+  .btn-more { background: var(--pink); color: white; border: none; border-radius: 8px; padding: 18px; font-family: 'Bebas Neue', sans-serif; font-size: 1.7rem; letter-spacing: 0.25em; cursor: pointer; width: 100%; transition: all 0.15s; box-shadow: 0 4px 24px var(--pink-glow); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; gap: 10px; }
   .btn-more::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 50%); pointer-events: none; }
   .btn-more:active { transform: scale(0.97); box-shadow: 0 2px 12px var(--pink-glow); }
   .btn-more:hover  { box-shadow: 0 6px 32px var(--pink-glow); filter: brightness(1.1); }
@@ -276,7 +276,7 @@ body.discretion .tag-spice { filter: grayscale(1); opacity: 0.4; }
 body.discretion .search-input { background: #111 !important; border-color: #222 !important; color: #444 !important; }
 body.discretion .search-clear { color: #333 !important; }
 
-/* Secondary full-width button - fits content width, not as bold as .btn-more */
+/* Secondary full-width button */
 .btn-action {
     background: var(--surface);
     color: var(--text);
@@ -293,44 +293,196 @@ body.discretion .search-clear { color: #333 !important; }
     margin: 8px 0 20px 0;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
 }
+.btn-action:hover { border-color: var(--pink); color: var(--pink); background: var(--pink-dim); transform: translateY(-1px); }
+.btn-action:active { transform: scale(0.98); }
+body.discretion .btn-action { background: #111 !important; border-color: #222 !important; color: #444 !important; box-shadow: none !important; text-shadow: none !important; }
+body.discretion .btn-action:hover { border-color: #333 !important; color: #666 !important; background: #181818 !important; transform: none; }
 
-.btn-action:hover {
-    border-color: var(--pink);
-    color: var(--pink);
-    background: var(--pink-dim);
-    transform: translateY(-1px);
+/* ── Spin dice icon ── */
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.spinning { animation: spin 0.2s ease; }
+
+/* ── Timed Mode ──────────────────────────────── */
+.timed-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.btn-action:active {
-    transform: scale(0.98);
+.btn-timed {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10.5px 12px;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn-timed:hover { border-color: var(--pink); color: var(--pink); }
+.btn-timed.active {
+  background: var(--pink-dim);
+  border-color: var(--pink);
+  color: var(--pink);
+}
+.btn-timed .timed-icon { font-size: 0.8rem; line-height: 1; }
+
+/* Interval picker (shown when timed is active) */
+.timed-interval-group {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: -8px;
+}
+.timed-interval-group.visible { display: flex; }
+.interval-btns { display: flex; gap: 6px; }
+.interval-btn {
+  flex: 1;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 4px;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--muted);
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.15s;
+  user-select: none;
+}
+.interval-btn:hover { border-color: var(--pink); color: var(--text); }
+.interval-btn.active { background: var(--pink-dim); border-color: var(--pink); color: var(--pink); }
+
+/* ── Timer display (replaces MORE button) ── */
+.timer-display {
+  display: none;
+  width: 100%;
+  border-radius: 8px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 18px 12px;
+  gap: 0;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  min-height: 74px;
+}
+.timer-display:hover { border-color: var(--pink); }
+.timer-display.visible { display: flex; }
+
+/* Progress bar along the bottom edge */
+.timer-progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: var(--pink);
+  box-shadow: 0 0 8px var(--pink-glow);
+  transition: width 0.95s linear;
+  border-radius: 0 2px 0 0;
 }
 
-/* ── Discretion Mode Styling for the new button ── */
-body.discretion .btn-action {
-    background: #111 !important;
-    border-color: #222 !important;
-    color: #444 !important;
-    box-shadow: none !important;
-    text-shadow: none !important;
+/* Inner layout */
+.timer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 
-body.discretion .btn-action:hover {
-    border-color: #333 !important;
-    color: #666 !important;
-    background: #181818 !important;
-    transform: none;
+.timer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
 }
 
-body.discretion .btn-action:active {
-    transform: scale(0.98);
+.timer-label {
+  font-size: 0.5rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
-    /* ── Spin dice icon ── */
-    @keyframes spin { 
-      from { transform: rotate(0deg); } 
-      to { transform: rotate(360deg); } }
-    .spinning { animation: spin 0.2s ease; }
+.timer-countdown {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.8rem;
+  letter-spacing: 0.1em;
+  color: var(--pink);
+  line-height: 1;
+  text-shadow: 0 0 20px var(--pink-glow);
+  transition: transform 0.1s;
+}
+.timer-countdown.tick { animation: tickPop 0.15s ease; }
+@keyframes tickPop { 0% { transform: scale(1.1); } 100% { transform: scale(1); } }
 
+.timer-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.timer-skip-btn {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.timer-skip-btn:hover { border-color: var(--pink); color: var(--pink); background: var(--pink-dim); }
+.timer-skip-btn svg { transition: transform 0.15s; }
+.timer-skip-btn:hover svg { transform: rotate(30deg) scale(1.1); }
+
+.timer-pause-btn {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.timer-pause-btn:hover { border-color: var(--muted); color: var(--text); }
+.timer-pause-btn.paused { border-color: var(--pin-color); color: var(--pin-color); background: var(--pin-dim); }
+
+/* Flash animation on auto-deal */
+@keyframes timerFlash {
+  0%   { background: var(--pink-dim); border-color: var(--pink); }
+  100% { background: var(--card);     border-color: var(--border); }
+}
+.timer-display.flash { animation: timerFlash 0.5s ease forwards; }
+
+/* Discretion overrides for timed UI */
+body.discretion .btn-timed { filter: grayscale(1); opacity: 0.5; }
+body.discretion .timed-interval-group { filter: grayscale(1); opacity: 0.5; }
+body.discretion .timer-display { background: #0d0d0d !important; border-color: #1a1a1a !important; }
+body.discretion .timer-countdown { color: #333 !important; text-shadow: none !important; }
+body.discretion .timer-progress-bar { background: #222 !important; box-shadow: none !important; }
+body.discretion .timer-skip-btn, body.discretion .timer-pause-btn { border-color: #1a1a1a !important; color: #333 !important; }
 </style>
 </head>
 <body>
@@ -341,27 +493,54 @@ body.discretion .btn-action:active {
   </header>
 
   <div class="search-wrap">
-  <input
-    class="search-input"
-    id="searchInput"
-    type="search"
-    placeholder="Search cards…"
-    autocomplete="off"
-    spellcheck="false"
-  >
-  <button class="search-clear" id="searchClear" aria-label="Clear search">&#x2715;</button>
-</div>
+    <input
+      class="search-input"
+      id="searchInput"
+      type="search"
+      placeholder="Search cards…"
+      autocomplete="off"
+      spellcheck="false"
+    >
+    <button class="search-clear" id="searchClear" aria-label="Clear search">&#x2715;</button>
+  </div>
 
+  <!-- MORE button (hidden in timed mode) -->
   <button class="btn-more" id="moreBtn"> 
     <svg class="icon" id="diceIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="2" y="2" width="20" height="20" rx="4"/>
-          <circle cx="8" cy="8" r="1.5" fill="currentColor" stroke="none"/>
-          <circle cx="16" cy="8" r="1.5" fill="currentColor" stroke="none"/>
-          <circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/>
-          <circle cx="8" cy="16" r="1.5" fill="currentColor" stroke="none"/>
-          <circle cx="16" cy="16" r="1.5" fill="currentColor" stroke="none"/>
-        </svg>
-        MORE</button>
+      <rect x="2" y="2" width="20" height="20" rx="4"/>
+      <circle cx="8" cy="8" r="1.5" fill="currentColor" stroke="none"/>
+      <circle cx="16" cy="8" r="1.5" fill="currentColor" stroke="none"/>
+      <circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/>
+      <circle cx="8" cy="16" r="1.5" fill="currentColor" stroke="none"/>
+      <circle cx="16" cy="16" r="1.5" fill="currentColor" stroke="none"/>
+    </svg>
+    MORE
+  </button>
+
+  <!-- Timer display (shown in timed mode) -->
+  <div class="timer-display" id="timerDisplay">
+    <div class="timer-progress-bar" id="timerProgressBar"></div>
+    <div class="timer-inner">
+      <div class="timer-left">
+        <div class="timer-label">Next deal in</div>
+        <div class="timer-countdown" id="timerCountdown">—</div>
+      </div>
+      <div class="timer-right">
+        <button class="timer-skip-btn" id="timerSkipBtn" title="Deal now & reset timer">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="4"/>
+            <circle cx="8" cy="8" r="1.5" fill="currentColor" stroke="none"/>
+            <circle cx="16" cy="8" r="1.5" fill="currentColor" stroke="none"/>
+            <circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/>
+            <circle cx="8" cy="16" r="1.5" fill="currentColor" stroke="none"/>
+            <circle cx="16" cy="16" r="1.5" fill="currentColor" stroke="none"/>
+          </svg>
+          Deal now
+        </button>
+        <button class="timer-pause-btn" id="timerPauseBtn">⏸ Pause</button>
+      </div>
+    </div>
+  </div>
 
   <div class="cards-area" id="cardsArea">
     <div class="empty-state">
@@ -371,24 +550,24 @@ body.discretion .btn-action:active {
   </div>
 
   <div class="filter-group">
-  <div class="filter-label">Spice</div>
-  <div class="spice-filter">
-    <div class="spice-range-labels">
-      <span>&#8722;5 negative</span>
-      <span>0 neutral</span>
-      <span>+5 spicy</span>
-    </div>
-    <div class="spice-slider-row">
-      <div class="spice-track"></div>
-      <div class="spice-fill" id="spiceFill"></div>
-      <input type="range" class="spice-thumb" id="spiceMin" min="-5" max="5" step="1" value="-5">
-      <input type="range" class="spice-thumb" id="spiceMax" min="-5" max="5" step="1" value="5">
-    </div>
-    <div class="spice-range-row">
-      From <span id="spiceMinLabel">&#8722;5</span>&nbsp;&nbsp;to&nbsp;&nbsp;<span id="spiceMaxLabel">+5</span>
+    <div class="filter-label">Spice</div>
+    <div class="spice-filter">
+      <div class="spice-range-labels">
+        <span>&#8722;5 negative</span>
+        <span>0 neutral</span>
+        <span>+5 spicy</span>
+      </div>
+      <div class="spice-slider-row">
+        <div class="spice-track"></div>
+        <div class="spice-fill" id="spiceFill"></div>
+        <input type="range" class="spice-thumb" id="spiceMin" min="-5" max="5" step="1" value="-5">
+        <input type="range" class="spice-thumb" id="spiceMax" min="-5" max="5" step="1" value="5">
+      </div>
+      <div class="spice-range-row">
+        From <span id="spiceMinLabel">&#8722;5</span>&nbsp;&nbsp;to&nbsp;&nbsp;<span id="spiceMaxLabel">+5</span>
+      </div>
     </div>
   </div>
-</div>
 
   <div class="filters">
     <div class="filter-group">
@@ -425,20 +604,36 @@ body.discretion .btn-action:active {
         <button class="count-btn"        data-count="all">All</button>
       </div>
     </div>
-    <button class="btn-discretion" id="discretionBtn">
-      <span class="disc-icon">&#9673;</span>
-      <span>Discretion</span>
-    </button>
+    <div class="timed-row">
+      <button class="btn-timed" id="timedBtn">
+        <span class="timed-icon">⏱</span>
+        <span>Timed</span>
+      </button>
+      <button class="btn-discretion" id="discretionBtn">
+        <span class="disc-icon">&#9673;</span>
+        <span>Discretion</span>
+      </button>
+    </div>
   </div>
+
+  <!-- Interval selector — only shown when timed mode is on -->
+  <div class="timed-interval-group" id="timedIntervalGroup">
+    <div class="filter-label">Interval</div>
+    <div class="interval-btns" id="intervalBtns">
+      <button class="interval-btn"        data-secs="10">10s</button>
+      <button class="interval-btn"        data-secs="30">30s</button>
+      <button class="interval-btn active" data-secs="60">1m</button>
+      <button class="interval-btn"        data-secs="120">2m</button>
+    </div>
+  </div>
+
   <button class="btn-action" onclick="openExternalLink('https://github.com/kay-who-codes/The-Openator')">
     Open The Openator
   </button>
 </div>
-<script src="AppFiles/redactedData.js"></script>
+<script src="AppFiles/data.js"></script>
 <script>
 // ── App state ─────────────────────────────────────────────
-// DATA is declared by AppFiles/redactedData.js
-//s as: const DATA = [ ... ];
 let allCategories = [];
 let allSettings   = [];
 let catCounts     = {};
@@ -453,13 +648,18 @@ let spiceHi       = 5;
 let searchMode    = false;
 let openDropdown  = null;
 
+// ── Timed mode state ──────────────────────────────────────
+let timedMode       = false;
+let timedInterval   = 60;   // seconds
+let timedRemaining  = 60;
+let timedTicker     = null; // setInterval handle
+let timedPaused     = false;
+
 const clickAudio = new Audio('/AppFiles/click.mp3');
 clickAudio.preload = 'auto';
 
-// ── Kick off immediately — data.js is already loaded ─────
 init();
 
-// ── Initialise everything once data is ready ─────────────
 function init() {
   allCategories = [...new Set(DATA.map(d => d.category))].sort();
   allSettings   = [...new Set(DATA.map(d => d.setting))].sort();
@@ -470,21 +670,18 @@ function init() {
   selectedCats = new Set(allCategories);
   selectedSets = new Set(allSettings);
 
-  // Update subheader with total count
   document.getElementById('subheader').textContent =
     '- ' + DATA.length + ' Tips & Gambits -';
 
-  // Show "Hit MORE" prompt now that data is loaded
   document.getElementById('cardsArea').innerHTML =
     '<div class="empty-state"><div class="empty-icon">&#9672;</div><p>Hit MORE to deal your cards</p></div>';
 
-  // Build dropdowns
   buildDropdown('catPanel', allCategories, selectedCats, 'catPreview', catCounts);
   buildDropdown('setPanel', allSettings,   selectedSets, 'setPreview', null);
   setupTrigger('cat');
   setupTrigger('set');
 
-  // Bind count buttons
+  // Count buttons
   document.getElementById('countBtns').addEventListener('click', (e) => {
     const btn = e.target.closest('.count-btn');
     if (!btn) return;
@@ -492,7 +689,7 @@ function init() {
     document.querySelectorAll('.count-btn').forEach(b => b.classList.toggle('active', b === btn));
   });
 
-  // Bind discretion button
+  // Discretion button
   const discretionBtn = document.getElementById('discretionBtn');
   discretionBtn.addEventListener('click', () => {
     discretion = !discretion;
@@ -500,7 +697,7 @@ function init() {
     discretionBtn.classList.toggle('active', discretion);
   });
 
-  // Bind MORE button
+  // MORE button
   document.getElementById('moreBtn').addEventListener('click', () => {
     closeAllDropdowns();
     searchMode = false;
@@ -511,7 +708,7 @@ function init() {
     renderCards(shuffle(getFiltered()));
   });
 
-  // Bind dice spin on MORE button
+  // Dice spin on MORE button
   const diceIcon = document.getElementById('diceIcon');
   document.getElementById('moreBtn').addEventListener('click', () => {
     diceIcon.classList.remove('spinning');
@@ -520,10 +717,9 @@ function init() {
     setTimeout(() => diceIcon.classList.remove('spinning'), 700);
   });
 
-  // Bind search
+  // Search
   const searchInput = document.getElementById('searchInput');
   const searchClear = document.getElementById('searchClear');
-
   searchInput.addEventListener('input', () => {
     searchClear.classList.toggle('visible', searchInput.value.length > 0);
     runSearch(searchInput, searchClear);
@@ -551,6 +747,146 @@ function init() {
   document.addEventListener('click', (e) => {
     if (!e.target.closest('.custom-select')) closeAllDropdowns();
   });
+
+  // ── Timed mode ─────────────────────────
+  document.getElementById('timedBtn').addEventListener('click', toggleTimedMode);
+
+  document.getElementById('intervalBtns').addEventListener('click', (e) => {
+    const btn = e.target.closest('.interval-btn');
+    if (!btn) return;
+    timedInterval = parseInt(btn.dataset.secs, 10);
+    document.querySelectorAll('.interval-btn').forEach(b => b.classList.toggle('active', b === btn));
+    if (timedMode) {
+      // Restart the timer with the new interval
+      resetTimer();
+    }
+  });
+
+  // Skip (deal now) button
+  document.getElementById('timerSkipBtn').addEventListener('click', (e) => {
+    e.stopPropagation();
+    timedDeal();
+    resetTimer();
+  });
+
+  // Pause button
+  document.getElementById('timerPauseBtn').addEventListener('click', (e) => {
+    e.stopPropagation();
+    togglePause();
+  });
+
+  // Clicking the timer display itself = deal now + reset
+  document.getElementById('timerDisplay').addEventListener('click', () => {
+    timedDeal();
+    resetTimer();
+  });
+}
+
+// ── Timed mode helpers ────────────────────────────────────
+function toggleTimedMode() {
+  timedMode = !timedMode;
+  const btn = document.getElementById('timedBtn');
+  const moreBtn = document.getElementById('moreBtn');
+  const timerDisplay = document.getElementById('timerDisplay');
+  const intervalGroup = document.getElementById('timedIntervalGroup');
+
+  btn.classList.toggle('active', timedMode);
+  moreBtn.style.display = timedMode ? 'none' : '';
+  timerDisplay.classList.toggle('visible', timedMode);
+  intervalGroup.classList.toggle('visible', timedMode);
+
+  if (timedMode) {
+    timedPaused = false;
+    resetTimer();
+    // Deal first batch immediately
+    timedDeal();
+  } else {
+    stopTimer();
+    // Restore the "hit MORE" prompt if no cards showing
+    const area = document.getElementById('cardsArea');
+    if (area.querySelector('.empty-state')) {
+      area.innerHTML = '<div class="empty-state"><div class="empty-icon">&#9672;</div><p>Hit MORE to deal your cards</p></div>';
+    }
+  }
+}
+
+function timedDeal() {
+  searchMode = false;
+  clickAudio.currentTime = 0;
+  clickAudio.play().catch(() => {});
+  renderCards(shuffle(getFiltered()));
+
+  // Flash the timer display
+  const td = document.getElementById('timerDisplay');
+  td.classList.remove('flash');
+  void td.offsetWidth;
+  td.classList.add('flash');
+  setTimeout(() => td.classList.remove('flash'), 600);
+}
+
+function resetTimer() {
+  stopTimer();
+  timedPaused = false;
+  timedRemaining = timedInterval;
+  updateTimerUI();
+  updatePauseBtn();
+  startTicker();
+}
+
+function startTicker() {
+  if (timedTicker) clearInterval(timedTicker);
+  timedTicker = setInterval(() => {
+    if (timedPaused) return;
+    timedRemaining--;
+    if (timedRemaining <= 0) {
+      timedRemaining = timedInterval;
+      timedDeal();
+    }
+    updateTimerUI();
+  }, 1000);
+}
+
+function stopTimer() {
+  if (timedTicker) { clearInterval(timedTicker); timedTicker = null; }
+}
+
+function togglePause() {
+  timedPaused = !timedPaused;
+  updatePauseBtn();
+}
+
+function updatePauseBtn() {
+  const btn = document.getElementById('timerPauseBtn');
+  btn.textContent = timedPaused ? '▶ Resume' : '⏸ Pause';
+  btn.classList.toggle('paused', timedPaused);
+}
+
+function updateTimerUI() {
+  const countdown = document.getElementById('timerCountdown');
+  const bar       = document.getElementById('timerProgressBar');
+
+  // Format seconds nicely: show mm:ss if ≥60s total interval
+  const fmt = (s) => {
+    if (timedInterval >= 60) {
+      const m = Math.floor(s / 60);
+      const sec = s % 60;
+      return m + ':' + String(sec).padStart(2, '0');
+    }
+    return String(s);
+  };
+
+  const prev = countdown.textContent;
+  const next = fmt(timedRemaining);
+  if (prev !== next) {
+    countdown.textContent = next;
+    countdown.classList.remove('tick');
+    void countdown.offsetWidth;
+    countdown.classList.add('tick');
+  }
+
+  // Progress bar: fills left → right as time elapses, empties when deal fires
+  const pct = (timedRemaining / timedInterval) * 100;
+  bar.style.width = pct + '%';
 }
 
 // ── Dropdown helpers ──────────────────────────────────────
@@ -791,7 +1127,7 @@ function openExternalLink(url) {
   window.open(url, '_blank');
 }
 </script>
-  <script>
+<script>
   if ("serviceWorker" in navigator) {
     window.addEventListener("load", () => {
       navigator.serviceWorker.register("/sw.js").then(reg => {
@@ -802,6 +1138,5 @@ function openExternalLink(url) {
     });
   }
 </script>
-
 </body>
 </html>
