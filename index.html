@@ -24,8 +24,8 @@
     --pink: rgb(255, 45, 120);
     --pink-dim: rgba(255, 45, 120, 0.15);
     --pink-glow: rgba(255, 45, 120, 0.35);
-    --text: #e8e8f0;
-    --muted: #5a5a72;
+    --text: #cccccc;
+    --muted: #5a5a69;
     --accent: #ff2d78;
     --pin-color: #ffd166;
     --pin-dim: rgba(255, 209, 102, 0.15);
@@ -56,7 +56,7 @@
     transition: opacity 0.3s;
   }
 
-  body.discretion { background: #000; color: #555; }
+  body.discretion { background: #000; color: #777; }
   body.discretion::before { opacity: 0; }
   body.discretion header { display: none; }
   body.discretion .filters, body.discretion .controls-row { filter: grayscale(1); opacity: 0.5; }
@@ -65,10 +65,10 @@
   }
   body.discretion .select-trigger:hover, body.discretion .count-btn:hover, body.discretion .count-btn.active { border-color: #333 !important; color: #666 !important; background: #181818 !important; }
   body.discretion .arrow { color: #333 !important; }
-  body.discretion .card { background: #0d0d0d !important; border-color: #1a1a1a !important; box-shadow: none !important; }
+  body.discretion .card { background: #111 !important; border-color: #1a1a1a !important; box-shadow: none !important; }
   body.discretion .card::before { opacity: 0; }
-  body.discretion .card-text { color: #444 !important; }
-  body.discretion .tag { display: none !important; }
+  body.discretion .card-text { color: #777 !important; }
+  body.discretion .tag { filter: grayscale(1); opacity: 0.5 !important; }
   body.discretion .pin-btn { opacity: 0.15 !important; }
   body.discretion .btn-more { background: #1a1a1a !important; color: #333 !important; box-shadow: none !important; filter: none !important; text-shadow: none !important; }
   body.discretion .btn-more:hover { background: #222 !important; filter: none !important; box-shadow: none !important; }
@@ -90,11 +90,11 @@
   header span { font-size: 0.6rem; letter-spacing: 0.25em; color: var(--muted); text-transform: uppercase; }
   .filters { display: flex; flex-direction: column; gap: 10px; }
   .filter-group { display: flex; flex-direction: column; gap: 6px; }
-  .filter-label { font-size: 0.55rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); }
+  .filter-label { font-size: 0.55rem; letter-spacing: 0.3em; text-transform: uppercase; color: rgb(226, 151, 178); }
   .custom-select { position: relative; }
   .select-trigger {
     background: var(--surface); border: 1px solid var(--border); border-radius: 6px;
-    padding: 10px 14px; font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--text);
+    padding: 10px 14px; font-family: 'DM Mono', monospace; font-size: 0.7rem; color: #888888;
     cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 8px;
     transition: border-color 0.2s; user-select: none;
   }
@@ -152,7 +152,7 @@
   .count-btn.active { background: var(--pink-dim); border-color: var(--pink); color: var(--pink); }
 
   .btn-discretion { background: transparent; border: 1px solid var(--border); border-radius: 6px; padding: 10.5px 12px; font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); cursor: pointer; transition: all 0.2s; white-space: nowrap; align-self: auto; display: flex; align-items: center; gap: 6px; }
-  .btn-discretion:hover { border-color: var(--muted); color: var(--text); }
+  .btn-discretion:hover { border-color: #860a0a; color: var(--text); }
   .btn-discretion.active { background: rgba(255,255,255,0.05); border-color: var(--muted); color: var(--text); }
   .btn-discretion .disc-icon { font-size: 0.75rem; line-height: 1; }
 
@@ -189,7 +189,7 @@
 
   .cat-affirmation { --cat: rgb(67, 254, 42); --cat-dim: rgba(67, 254, 42, 0.15); --cat-glow: rgba(67, 254, 42, 0.35); }
   .cat-behaviour { --cat: rgb(44, 142, 254); --cat-dim: rgb(44, 142, 254, 0.15); --cat-glow: rgb(44, 142, 254, 0.35); }
-  .cat-exercise { --cat: rgb(224, 224, 224); --cat-dim: rgba(224, 224, 224, 0.15); --cat-glow: rgba(224, 224, 224, 0.35); }
+  .cat-exercises { --cat: rgb(255, 88, 88); --cat-dim: rgba(255, 88, 88, 0.15); --cat-glow: rgba(255, 88, 88, 0.35); }
   .cat-gambit { --cat: rgb(255, 122, 61); --cat-dim: rgba(255, 122, 61, 0.15); --cat-glow: rgba(255, 122, 61, 0.35); }
   .cat-game { --cat: rgb(255, 95, 95); --cat-dim: rgba(255, 95, 95, 0.15); --cat-glow: rgba(255, 95, 95, 0.35); }
   .cat-joke { --cat: rgb(144, 255, 80); --cat-dim: rgba(144, 255, 80, 0.15); --cat-glow: rgba(144, 255, 80, 0.35); }
@@ -201,7 +201,7 @@
   .cat-prop { --cat: rgb(59, 193, 255); --cat-dim: rgba(59, 193, 255, 0.15); --cat-glow: rgba(59, 193, 255, 0.35); }
   .cat-reply { --cat: rgb(139, 113, 255); --cat-dim: rgba(139, 113, 255, 0.15); --cat-glow: rgba(139, 113, 255, 0.35); }
   .cat-seduction { --cat: rgb(182, 57, 255); --cat-dim: rgba(182, 57, 255, 0.15); --cat-glow: rgba(182, 57, 255, 0.35); }
-  .cat-situational { --cat: rgba(122, 59, 255, 1.00); --cat-dim: rgba(122, 59, 255, 0.15); --cat-glow: rgba(122, 59, 255, 0.35); }
+  .cat-conditional { --cat: rgba(122, 59, 255, 1.00); --cat-dim: rgba(122, 59, 255, 0.15); --cat-glow: rgba(122, 59, 255, 0.35); }
   .cat-story { --cat: rgb(63, 255, 165); --cat-dim: rgba(63, 255, 165, 0.15); --cat-glow: rgba(63, 255, 165, 0.35); }
   .cat-statmaxing { --cat: rgba(255, 64, 144, 1.00); --cat-dim: rgba(255, 64, 144, 0.15); --cat-glow: rgba(255, 64, 144, 0.35); }
   .cat-truism { --cat: rgb(207, 207, 207); --cat-dim: rgba(207, 207, 207, 0.15); --cat-glow: rgba(207, 207, 207, 0.35); }
@@ -238,12 +238,12 @@
   @keyframes btnPulse { 0% { transform: scale(1); } 50% { transform: scale(0.96); } 100% { transform: scale(1); } }
 
 /* ── Spice ─────────────────────────────────── */
-.spice-filter { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 12px 14px; }
-.spice-range-labels { display: flex; justify-content: space-between; font-size: 0.5rem; color: var(--muted); margin-bottom: 10px; letter-spacing: 0.1em; }
+.spice-filter { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 8px 14px; }
+.spice-range-labels { display: flex; justify-content: space-between; font-size: 0.5rem; color: var(--muted); margin-bottom: 6px; letter-spacing: 0.1em; }
 .spice-slider-row { position: relative; height: 28px; display: flex; align-items: center; }
 .spice-track { position: absolute; left: 0; right: 0; height: 4px; background: var(--border); border-radius: 2px; pointer-events: none; }
 .spice-fill  { position: absolute; height: 4px; border-radius: 2px; pointer-events: none; }
-.spice-range-row { display: flex; justify-content: space-between; margin-top: 8px; font-size: 0.65rem; color: var(--muted); }
+.spice-range-row { display: flex; justify-content: space-between; margin-top: 4px; font-size: 0.65rem; color: var(--muted); }
 .spice-range-row span { color: var(--text); font-weight: 500; }
 input[type=range].spice-thumb { -webkit-appearance: none; appearance: none; position: absolute; width: 100%; height: 4px; background: transparent; pointer-events: none; outline: none; }
 input[type=range].spice-thumb::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 18px; height: 18px; border-radius: 50%; background: var(--text); border: 2px solid var(--pink); pointer-events: all; cursor: pointer; }
@@ -252,6 +252,38 @@ input[type=range].spice-thumb::-moz-range-thumb { width: 18px; height: 18px; bor
 
 body.discretion .spice-filter { filter: grayscale(1); opacity: 0.5; }
 body.discretion .tag-spice { filter: grayscale(1); opacity: 0.4; }
+
+/* ── Pertinence ─────────────────────────────── */
+.pert-filter { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 8px 14px; }
+.pert-range-labels { display: flex; justify-content: space-between; font-size: 0.5rem; color: var(--muted); margin-bottom: 6px; letter-spacing: 0.1em; }
+.pert-slider-row { position: relative; height: 28px; display: flex; align-items: center; }
+.pert-track { position: absolute; left: 0; right: 0; height: 4px; background: var(--border); border-radius: 2px; pointer-events: none; }
+.pert-fill { position: absolute; height: 4px; border-radius: 2px; pointer-events: none; }
+.pert-range-row { display: flex; justify-content: space-between; margin-top: 4px; font-size: 0.65rem; color: var(--muted); }
+.pert-range-row span { color: var(--text); font-weight: 500; }
+input[type=range].pert-thumb { -webkit-appearance: none; appearance: none; position: absolute; width: 100%; height: 4px; background: transparent; pointer-events: none; outline: none; }
+input[type=range].pert-thumb::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 18px; height: 18px; border-radius: 4px; background: var(--text); border: 2px solid #f0a500; pointer-events: all; cursor: pointer; }
+input[type=range].pert-thumb::-moz-range-thumb { width: 18px; height: 18px; border-radius: 4px; box-sizing: border-box; background: var(--text); border: 2px solid #f0a500; pointer-events: all; cursor: pointer; }
+.tag-pert { font-size: 0.5rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 3px 9px; border-radius: 3px; font-weight: 500; }
+
+body.discretion .pert-filter { filter: grayscale(1); opacity: 0.5; }
+body.discretion .tag-pert { filter: grayscale(1); opacity: 0.4; }
+
+/* ── Boldness ────────────────────────────────── */
+.bold-filter { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 8px 14px; }
+.bold-range-labels { display: flex; justify-content: space-between; font-size: 0.5rem; color: var(--muted); margin-bottom: 6px; letter-spacing: 0.1em; }
+.bold-slider-row { position: relative; height: 28px; display: flex; align-items: center; }
+.bold-track { position: absolute; left: 0; right: 0; height: 4px; background: var(--border); border-radius: 2px; pointer-events: none; }
+.bold-fill { position: absolute; height: 4px; border-radius: 2px; pointer-events: none; }
+.bold-range-row { display: flex; justify-content: space-between; margin-top: 4px; font-size: 0.65rem; color: var(--muted); }
+.bold-range-row span { color: var(--text); font-weight: 500; }
+input[type=range].bold-thumb { -webkit-appearance: none; appearance: none; position: absolute; width: 100%; height: 4px; background: transparent; pointer-events: none; outline: none; }
+input[type=range].bold-thumb::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 18px; height: 18px; border-radius: 2px; background: var(--text); border: 2px solid #9b5cf6; pointer-events: all; cursor: pointer; transform: rotate(45deg); pointer-events: all; cursor: pointer; }
+input[type=range].bold-thumb::-moz-range-thumb { width: 18px; height: 18px; border-radius: 2px; box-sizing: border-box; background: var(--text); border: 2px solid #9b5cf6; transform: rotate(45deg); pointer-events: all; cursor: pointer; }
+.tag-bold { font-size: 0.5rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 3px 9px; border-radius: 3px; font-weight: 500; }
+
+body.discretion .bold-filter { filter: grayscale(1); opacity: 0.5; }
+body.discretion .tag-bold { filter: grayscale(1); opacity: 0.4; }
 
 /* ── Search bar ───────────────────────────── */
 .search-wrap {
@@ -333,6 +365,9 @@ body.discretion .btn-action:hover { border-color: #333 !important; color: #666 !
   color: var(--pink);
 }
 .btn-timed .timed-icon { font-size: 0.8rem; line-height: 1; }
+
+
+
 
 /* Interval picker (shown when timed is active) */
 .timed-interval-group {
@@ -477,7 +512,7 @@ body.discretion .btn-action:hover { border-color: #333 !important; color: #666 !
 .timer-display.flash { animation: timerFlash 0.5s ease forwards; }
 
 /* Discretion overrides for timed UI */
-body.discretion .btn-timed { filter: grayscale(1); opacity: 0.5; }
+body.discretion .btn-timed { color: #ff0000 !important; background: #0f0f0f !important; }
 body.discretion .timed-interval-group { filter: grayscale(1); opacity: 0.5; }
 body.discretion .timer-display { background: #0d0d0d !important; border-color: #1a1a1a !important; }
 body.discretion .timer-countdown { color: #333 !important; text-shadow: none !important; }
@@ -549,6 +584,67 @@ body.discretion .timer-skip-btn, body.discretion .timer-pause-btn { border-color
     </div>
   </div>
 
+  <!-- Dropdowns -->
+
+    <div class="filters">
+    <div class="filter-group">
+      <div class="filter-label">Category</div>
+      <div class="custom-select" id="catSelect">
+        <div class="select-trigger" id="catTrigger">
+          <span class="preview" id="catPreview">All categories</span>
+          <span class="arrow">&#9660;</span>
+        </div>
+        <div class="dropdown-panel" id="catPanel"></div>
+      </div>
+    </div>
+
+  <div class="filters">
+    <div class="filter-group">
+      <div class="filter-label">Setting</div>
+      <div class="custom-select" id="setSelect">
+        <div class="select-trigger" id="setTrigger">
+          <span class="preview" id="setPreview">All settings</span>
+          <span class="arrow">&#9660;</span>
+        </div>
+        <div class="dropdown-panel" id="setPanel"></div>
+      </div>
+    </div>
+  </div>
+
+    <div class="filter-group">
+      <div class="filter-label">Time</div>
+      <div class="custom-select" id="timeSelect">
+        <div class="select-trigger" id="timeTrigger">
+          <span class="preview" id="timePreview">All times</span>
+          <span class="arrow">&#9660;</span>
+        </div>
+        <div class="dropdown-panel" id="timePanel"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sliders -->
+
+<div class="filter-group">
+    <div class="filter-label">Pertinence</div>
+    <div class="pert-filter">
+      <div class="pert-range-labels">
+        <span>&#8722;5 negative</span>
+        <span>0 neutral</span>
+        <span>+5 spicy</span>
+      </div>
+      <div class="pert-slider-row">
+        <div class="pert-track"></div>
+        <div class="pert-fill" id="pertFill"></div>
+        <input type="range" class="pert-thumb" id="pertMin" min="-1" max="5" step="1" value="1">
+        <input type="range" class="pert-thumb" id="pertMax" min="-1" max="5" step="1" value="5">
+      </div>
+      <div class="pert-range-row">
+        From <span id="pertMinLabel">1</span>&nbsp;&nbsp;to&nbsp;&nbsp;<span id="pertMaxLabel">5</span>
+      </div>
+    </div>
+  </div>
+
   <div class="filter-group">
     <div class="filter-label">Spice</div>
     <div class="spice-filter">
@@ -569,26 +665,22 @@ body.discretion .timer-skip-btn, body.discretion .timer-pause-btn { border-color
     </div>
   </div>
 
-  <div class="filters">
-    <div class="filter-group">
-      <div class="filter-label">Category</div>
-      <div class="custom-select" id="catSelect">
-        <div class="select-trigger" id="catTrigger">
-          <span class="preview" id="catPreview">All categories</span>
-          <span class="arrow">&#9660;</span>
-        </div>
-        <div class="dropdown-panel" id="catPanel"></div>
+  <div class="filter-group">
+    <div class="filter-label">Boldness</div>
+    <div class="bold-filter">
+      <div class="bold-range-labels">
+        <span>&#8722;5 negative</span>
+        <span>0 neutral</span>
+        <span>+5 bold</span>
       </div>
-    </div>
-
-    <div class="filter-group">
-      <div class="filter-label">Setting</div>
-      <div class="custom-select" id="setSelect">
-        <div class="select-trigger" id="setTrigger">
-          <span class="preview" id="setPreview">All settings</span>
-          <span class="arrow">&#9660;</span>
-        </div>
-        <div class="dropdown-panel" id="setPanel"></div>
+      <div class="bold-slider-row">
+        <div class="bold-track"></div>
+        <div class="bold-fill" id="boldFill"></div>
+        <input type="range" class="bold-thumb" id="boldMin" min="0" max="5" step="1" value="0">
+        <input type="range" class="bold-thumb" id="boldMax" min="-5" max="5" step="1" value="5">
+      </div>
+      <div class="bold-range-row">
+        From <span id="boldMinLabel">0</span>&nbsp;&nbsp;to&nbsp;&nbsp;<span id="boldMaxLabel">5</span>
       </div>
     </div>
   </div>
@@ -621,9 +713,9 @@ body.discretion .timer-skip-btn, body.discretion .timer-pause-btn { border-color
     <div class="filter-label">Interval</div>
     <div class="interval-btns" id="intervalBtns">
       <button class="interval-btn"        data-secs="10">10s</button>
-      <button class="interval-btn"        data-secs="30">30s</button>
-      <button class="interval-btn active" data-secs="60">1m</button>
-      <button class="interval-btn"        data-secs="120">2m</button>
+      <button class="interval-btn active"        data-secs="15">15s</button>
+      <button class="interval-btn"        data-secs="20">20s</button>
+      <button class="interval-btn"        data-secs="60">1m</button>
     </div>
   </div>
 
@@ -631,7 +723,7 @@ body.discretion .timer-skip-btn, body.discretion .timer-pause-btn { border-color
     Open The Openator
   </button>
 </div>
-<script src="AppFiles/data.js"></script>
+<script src="TestFiles/Data.js"></script>
 <script>
 // ── App state ─────────────────────────────────────────────
 let allCategories = [];
@@ -639,23 +731,24 @@ let allSettings   = [];
 let catCounts     = {};
 let setCounts     = {};
 let selectedCats  = new Set();
-let selectedSets  = new Set();
+let selectedSets  = new Set();      let allTimes = [], timeCounts = {}, selectedTimes = new Set();
 let cardCount     = 3;
 let discretion    = false;
 let pinnedItems   = [];
-let spiceLo       = -5;
-let spiceHi       = 5;
+let spiceLo       = -5,         spiceHi         = 5;
+let pertLo        = 1,         pertHi          = 5;
+let boldLo        = 0,          boldHi          = 5;
 let searchMode    = false;
 let openDropdown  = null;
 
 // ── Timed mode state ──────────────────────────────────────
 let timedMode       = false;
-let timedInterval   = 60;   // seconds
-let timedRemaining  = 60;
+let timedInterval   = 15;   // seconds
+let timedRemaining  = 15;
 let timedTicker     = null; // setInterval handle
 let timedPaused     = false;
 
-const clickAudio = new Audio('/AppFiles/click.mp3');
+const clickAudio = new Audio('./TestFiles/click.mp3');
 clickAudio.preload = 'auto';
 
 init();
@@ -670,6 +763,14 @@ function init() {
   selectedCats = new Set(allCategories);
   selectedSets = new Set(allSettings);
 
+  allTimes = [...new Set(DATA.map(d => d.time))].sort();
+  allTimes.forEach(t => { timeCounts[t] = DATA.filter(d => d.time === t).length; });
+  
+  selectedTimes = new Set(allTimes);
+
+
+
+
   document.getElementById('subheader').textContent =
     '- ' + DATA.length + ' Tips & Gambits -';
 
@@ -678,8 +779,10 @@ function init() {
 
   buildDropdown('catPanel', allCategories, selectedCats, 'catPreview', catCounts);
   buildDropdown('setPanel', allSettings,   selectedSets, 'setPreview', null);
+  buildDropdown('timePanel', allTimes, selectedTimes, 'timePreview', timeCounts);
   setupTrigger('cat');
   setupTrigger('set');
+  setupTrigger('time');
 
   // Count buttons
   document.getElementById('countBtns').addEventListener('click', (e) => {
@@ -742,6 +845,47 @@ function init() {
     if (spiceHi < spiceLo) { spiceHi = spiceLo; this.value = spiceHi; }
     updateSpiceFill();
   });
+
+  // Pert sliders
+  updatePertFill();
+  document.getElementById('pertMin').addEventListener('input', function() {
+    pertLo = parseInt(this.value);
+    if (pertLo > pertHi) { pertLo = pertHi; this.value = pertLo; }
+    updatePertFill();
+  });
+  document.getElementById('pertMax').addEventListener('input', function() {
+    pertHi = parseInt(this.value);
+    if (pertHi < pertLo) { pertHi = pertLo; this.value = pertHi; }
+    updatePertFill();
+  });
+
+  // Pert sliders
+  updatePertFill();
+  document.getElementById('pertMin').addEventListener('input', function() {
+    pertLo = parseInt(this.value);
+    if (pertLo > pertHi) { pertLo = pertHi; this.value = pertLo; }
+    updatePertFill();
+  });
+  document.getElementById('pertMax').addEventListener('input', function() {
+    pertHi = parseInt(this.value);
+    if (pertHi < pertLo) { pertHi = pertLo; this.value = pertHi; }
+    updatePertFill();
+  });
+
+
+  // Bold sliders
+  updateBoldFill();
+  document.getElementById('boldMin').addEventListener('input', function() {
+    boldLo = parseInt(this.value);
+    if (boldLo > boldHi) { boldLo = boldHi; this.value = boldLo; }
+    updateBoldFill();
+  });
+  document.getElementById('boldMax').addEventListener('input', function() {
+    boldHi = parseInt(this.value);
+    if (boldHi < boldLo) { boldHi = boldLo; this.value = boldHi; }
+    updateBoldFill();
+  });
+  
 
   // Close dropdowns on outside click
   document.addEventListener('click', (e) => {
@@ -972,21 +1116,23 @@ function updatePreview(previewId, selectedSet, allItems) {
 }
 
 function openPanel(key) {
-  document.getElementById(key === 'cat' ? 'catPanel' : 'setPanel').classList.add('open');
-  document.getElementById(key === 'cat' ? 'catTrigger' : 'setTrigger').classList.add('open');
+  document.getElementById(key + 'Panel').classList.add('open');
+  document.getElementById(key + 'Trigger').classList.add('open');
   openDropdown = key;
 }
 function closePanel(key) {
-  document.getElementById(key === 'cat' ? 'catPanel' : 'setPanel').classList.remove('open');
-  document.getElementById(key === 'cat' ? 'catTrigger' : 'setTrigger').classList.remove('open');
+  document.getElementById(key + 'Panel').classList.remove('open');
+  document.getElementById(key + 'Trigger').classList.remove('open');
   if (openDropdown === key) openDropdown = null;
 }
-function closeAllDropdowns() { closePanel('cat'); closePanel('set'); }
+function closeAllDropdowns() { closePanel('cat'); closePanel('set'); closePanel('time'); }
 function setupTrigger(key) {
-  document.getElementById(key === 'cat' ? 'catTrigger' : 'setTrigger').addEventListener('click', (e) => {
+  document.getElementById(key + 'Trigger').addEventListener('click', (e) => {
     e.stopPropagation();
     openDropdown === key ? closePanel(key) : (closeAllDropdowns(), openPanel(key));
   });
+
+
 }
 
 // ── Filtering & rendering ─────────────────────────────────
@@ -994,7 +1140,10 @@ function getFiltered() {
   return DATA.filter(d =>
     selectedCats.has(d.category) &&
     selectedSets.has(d.setting) &&
-    d.spice >= spiceLo && d.spice <= spiceHi
+    selectedTimes.has(d.time) &&
+    d.spice      >= spiceLo && d.spice      <= spiceHi &&
+    d.pertinence >= pertLo  && d.pertinence <= pertHi  &&
+    d.boldness   >= boldLo  && d.boldness   <= boldHi
   );
 }
 
@@ -1038,6 +1187,66 @@ function makeSpiceTag(spice) {
   return tag;
 }
 
+function updatePertFill() {
+  const pct = v => ((v + 1) / 6) * 100;  // range is -1 to 5, span of 6
+  const fill = document.getElementById('pertFill');
+  fill.style.left  = pct(pertLo) + '%';
+  fill.style.width = (pct(pertHi) - pct(pertLo)) + '%';
+  const loNeg = pertLo < 0, hiPos = pertHi > 0;
+  if (loNeg && hiPos)    fill.style.background = 'linear-gradient(to right,#b0a090,#888,#f0a500)';
+  else if (loNeg)        fill.style.background = '#b0a090';
+  else if (hiPos)        fill.style.background = '#f0a500';
+  else                   fill.style.background = '#888';
+  const fmt = v => v >= 0 ? '+' + v : '' + v;
+  document.getElementById('pertMinLabel').textContent = fmt(pertLo);
+  document.getElementById('pertMaxLabel').textContent = fmt(pertHi);
+}
+
+function makePertTag(pert) {
+  const tag = document.createElement('span');
+  tag.className = 'tag tag-pert';
+  if (pert > 0) {
+    tag.textContent = '🎯 +' + pert;
+    tag.style.cssText = 'background:rgba(240,165,0,0.15);border:1px solid rgba(240,165,0,0.35);color:#f0a500;';
+  } else if (pert < 0) {
+    tag.textContent = '↙ ' + pert;
+    tag.style.cssText = 'background:rgba(176,160,144,0.15);border:1px solid rgba(176,160,144,0.35);color:#b0a090;';
+  } else {
+    tag.textContent = '— 0';
+    tag.style.cssText = 'background:rgba(136,136,136,0.12);border:1px solid rgba(136,136,136,0.25);color:#888;';
+  }
+  return tag;
+}
+
+function updateBoldFill() {
+  const pct = v => (v / 5) * 100;  // range is 0 to 5
+  const fill = document.getElementById('boldFill');
+  fill.style.left  = pct(boldLo) + '%';
+  fill.style.width = (pct(boldHi) - pct(boldLo)) + '%';
+  if (boldHi === 0)                          fill.style.background = '#888';
+  else if (boldLo === 0 && boldHi === 5)     fill.style.background = 'linear-gradient(to right,#6d28d9,#9b5cf6,#c084fc)';
+  else if (boldLo === 0)                     fill.style.background = 'linear-gradient(to right,#6d28d9,#9b5cf6)';
+  else                                       fill.style.background = '#9b5cf6';
+  document.getElementById('boldMinLabel').textContent = boldLo;
+  document.getElementById('boldMaxLabel').textContent = boldHi;
+}
+
+function makeBoldTag(bold) {
+  const tag = document.createElement('span');
+  tag.className = 'tag tag-bold';
+  if (bold >= 4) {
+    tag.textContent = '⚡ ' + bold;
+    tag.style.cssText = 'background:rgba(155,92,246,0.2);border:1px solid rgba(155,92,246,0.45);color:#9b5cf6;';
+  } else if (bold >= 1) {
+    tag.textContent = '◈ ' + bold;
+    tag.style.cssText = 'background:rgba(109,40,217,0.12);border:1px solid rgba(109,40,217,0.3);color:#a370f7;';
+  } else {
+    tag.textContent = '— 0';
+    tag.style.cssText = 'background:rgba(136,136,136,0.12);border:1px solid rgba(136,136,136,0.25);color:#888;';
+  }
+  return tag;
+}
+
 function isPinned(item) { return pinnedItems.includes(item); }
 
 function togglePin(item, cardEl, pinBtn) {
@@ -1072,7 +1281,9 @@ function makeCard(item) {
     '<div class="card-text">' + item.text + '</div>';
 
   const meta = card.querySelector('.card-meta');
-  meta.insertBefore(makeSpiceTag(item.spice), meta.children[2] || null);
+  meta.insertBefore(makePertTag(item.pertinence), meta.children[2] || null);
+  meta.insertBefore(makeSpiceTag(item.spice), meta.children[3] || null);
+  meta.insertBefore(makeBoldTag(item.boldness),   meta.children[4] || null);
   meta.appendChild(pinBtn);
 
   pinBtn.addEventListener('click', (e) => {
