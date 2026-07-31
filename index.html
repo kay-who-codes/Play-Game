@@ -187,27 +187,6 @@
   .card-meta { display: flex; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; align-items: center; }
   .tag { font-size: 0.5rem; letter-spacing: 0.2em; text-transform: uppercase; padding: 3px 8px; border-radius: 3px; font-weight: 500; }
 
-  .cat-affirmation { --cat: rgb(67, 254, 42); --cat-dim: rgba(67, 254, 42, 0.15); --cat-glow: rgba(67, 254, 42, 0.35); }
-  .cat-behaviour { --cat: rgb(44, 142, 254); --cat-dim: rgb(44, 142, 254, 0.15); --cat-glow: rgb(44, 142, 254, 0.35); }
-  .cat-exercises { --cat: rgb(255, 88, 88); --cat-dim: rgba(255, 88, 88, 0.15); --cat-glow: rgba(255, 88, 88, 0.35); }
-  .cat-gambit { --cat: rgb(255, 122, 61); --cat-dim: rgba(255, 122, 61, 0.15); --cat-glow: rgba(255, 122, 61, 0.35); }
-  .cat-game { --cat: rgb(255, 95, 95); --cat-dim: rgba(255, 95, 95, 0.15); --cat-glow: rgba(255, 95, 95, 0.35); }
-  .cat-joke { --cat: rgb(144, 255, 80); --cat-dim: rgba(144, 255, 80, 0.15); --cat-glow: rgba(144, 255, 80, 0.35); }
-  .cat-nlp { --cat: rgb(0, 0, 0); --cat-dim: rgba(179, 179, 179, 0.76); --cat-glow: rgba(144, 255, 80, 0.35); }
-  .cat-opener { --cat: rgb(255, 186, 59); --cat-dim: rgba(144, 255, 80, 0.15); --cat-glow: rgba(144, 255, 80, 0.35); }
-  .cat-question { --cat: rgb(157, 130, 255); --cat-dim: rgba(157, 130, 255, 0.15); --cat-glow: rgba(157, 130, 255, 0.35); }
-  .cat-phrase { --cat: rgb(252, 255, 57); --cat-dim: rgba(252, 255, 57, 0.15); --cat-glow: rgba(252, 255, 57, 0.35); }
-  .cat-pre-game { --cat: rgb(196, 255, 57); --cat-dim: rgba(196, 255, 57, 0.15); --cat-glow: rgba(196, 255, 57, 0.35); }
-  .cat-prop { --cat: rgb(59, 193, 255); --cat-dim: rgba(59, 193, 255, 0.15); --cat-glow: rgba(59, 193, 255, 0.35); }
-  .cat-reply { --cat: rgb(139, 113, 255); --cat-dim: rgba(139, 113, 255, 0.15); --cat-glow: rgba(139, 113, 255, 0.35); }
-  .cat-seduction { --cat: rgb(182, 57, 255); --cat-dim: rgba(182, 57, 255, 0.15); --cat-glow: rgba(182, 57, 255, 0.35); }
-  .cat-conditional { --cat: rgba(122, 59, 255, 1.00); --cat-dim: rgba(122, 59, 255, 0.15); --cat-glow: rgba(122, 59, 255, 0.35); }
-  .cat-story { --cat: rgb(63, 255, 165); --cat-dim: rgba(63, 255, 165, 0.15); --cat-glow: rgba(63, 255, 165, 0.35); }
-  .cat-statmaxing { --cat: rgba(255, 64, 144, 1.00); --cat-dim: rgba(255, 64, 144, 0.15); --cat-glow: rgba(255, 64, 144, 0.35); }
-  .cat-truism { --cat: rgb(207, 207, 207); --cat-dim: rgba(207, 207, 207, 0.15); --cat-glow: rgba(207, 207, 207, 0.35); }
-  .tag-category { background: var(--cat-dim); color: var(--cat); border: 1px solid color-mix(in srgb, var(--cat) 30%, transparent); }
-  .tag-setting { background: rgba(255,255,255,0.04); color: var(--muted); border: 1px solid var(--border); }
-
   .pin-btn {
     margin-left: auto;
     background: none; border: none; cursor: pointer;
@@ -723,7 +702,7 @@ body.discretion .timer-skip-btn, body.discretion .timer-pause-btn { border-color
     Open The Openator
   </button>
 </div>
-<script src="TestFiles/Data.js"></script>
+<script src="AppFiles/Data.js"></script>
 <script>
 // ── App state ─────────────────────────────────────────────
 let allCategories = [];
@@ -748,7 +727,7 @@ let timedRemaining  = 15;
 let timedTicker     = null; // setInterval handle
 let timedPaused     = false;
 
-const clickAudio = new Audio('./TestFiles/click.mp3');
+const clickAudio = new Audio('./AppFiles/click.mp3');
 clickAudio.preload = 'auto';
 
 init();
