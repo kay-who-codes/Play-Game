@@ -500,6 +500,16 @@ body.discretion .timer-skip-btn, body.discretion .timer-pause-btn { border-color
 </style>
 </head>
 <body>
+
+<div id="tokenGate" style="position:fixed;inset:0;background:#0a0a0a;display:flex;align-items:center;justify-content:center;z-index:9999;flex-direction:column;gap:12px;">
+  <input type="password" id="tokenInput" placeholder="Access token" autocomplete="off"
+    style="padding:10px 14px;font-size:16px;border-radius:6px;border:1px solid #444;background:#1a1a1a;color:#fff;width:240px;">
+  <button id="tokenSubmit" style="padding:10px 20px;border-radius:6px;border:none;background:#9b5cf6;color:#fff;cursor:pointer;">
+    Unlock
+  </button>
+  <div id="tokenError" style="color:#ff2d78;font-size:13px;min-height:16px;"></div>
+</div>
+      
 <div class="wrapper">
   <header>
     <h1>PLAY GAME</h1>
@@ -702,8 +712,6 @@ body.discretion .timer-skip-btn, body.discretion .timer-pause-btn { border-color
     Open The Openator
   </button>
 </div>
-<script src="AppFiles/redactedData.js"></script>
-<script>
 // ── App state ─────────────────────────────────────────────
 let allCategories = [];
 let allSettings   = [];
@@ -730,8 +738,44 @@ let timedPaused     = false;
 const clickAudio = new Audio('./AppFiles/click.mp3');
 clickAudio.preload = 'auto';
 
-init();
+      let DATA = [];
 
+      const WORKER_URL = "https://my-data-api.colacoka.workers.dev";
+      
+      document.getElementById('tokenSubmit').addEventListener('click', attemptUnlock);
+      document.getElementById('tokenInput').addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') attemptUnlock();
+      });
+      
+      async function attemptUnlock() {
+        const token = document.getElementById('tokenInput').value.trim();
+        const errorEl = document.getElementById('tokenError');
+        const submitBtn = document.getElementById('tokenSubmit');
+        if (!token) return;
+      
+        submitBtn.disabled = true;
+        errorEl.textContent = '';
+      
+        try {
+          const response = await fetch(WORKER_URL, {
+            headers: { Authorization: `Bearer ${token}` }
+          });
+      
+          if (!response.ok) {
+            errorEl.textContent = 'Invalid token';
+            submitBtn.disabled = false;
+            return;
+          }
+      
+          DATA = await response.json();
+          document.getElementById('tokenGate').remove();
+          init();
+        } catch (err) {
+          errorEl.textContent = 'Connection failed';
+          submitBtn.disabled = false;
+        }
+      }
+      
 function init() {
   allCategories = [...new Set(DATA.map(d => d.category))].sort();
   allSettings   = [...new Set(DATA.map(d => d.setting))].sort();
